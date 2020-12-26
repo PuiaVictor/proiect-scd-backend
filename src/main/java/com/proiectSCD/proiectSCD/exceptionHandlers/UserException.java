@@ -1,10 +1,10 @@
 package com.proiectSCD.proiectSCD.exceptionHandlers;
 
-public class UserCreationException extends Exception{
+public class UserException extends Exception{
     private int status;
     private String message;
 
-    public UserCreationException(int status, String message) {
+    public UserException(int status, String message) {
         this.status = status;
         this.message = message;
     }

@@ -1,16 +1,27 @@
 package com.proiectSCD.proiectSCD.controller;
 
+import com.proiectSCD.proiectSCD.exceptionHandlers.UserException;
 import com.proiectSCD.proiectSCD.model.dto.UserCreationDTO;
+import com.proiectSCD.proiectSCD.model.dto.UserLoginDTO;
+import com.proiectSCD.proiectSCD.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    private final UserService userService;
+
+    //TODO: add beans
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping(path = "/getMe")
     public List<Integer> getList(){
@@ -20,30 +31,21 @@ public class UserController {
         return myList;
     }
 
-    @PostMapping(path = "/createUser")
-    public ResponseEntity createUser(@RequestBody final UserCreationDTO userCreationDTO){
-        
+    @PostMapping(path = "/register")
+    public ResponseEntity<UserEntity> registerUser(@RequestBody final UserCreationDTO userCreationDTO) throws UserException {
+        return ResponseEntity.ok(userService.userRegistration(userCreationDTO));
     }
 
-    @GetMapping(path = "/getAllUsers")
-    public void getAllUsers(){
-        //TODO: implementation
+    @PostMapping(path = "/login")
+    public ResponseEntity<UserEntity> loginUser(@RequestBody final UserLoginDTO userLoginDTO) throws UserException {
+        return ResponseEntity.ok(userService.userLogin(userLoginDTO));
     }
 
-//    @PostMapping(path = "/newLocation")
-//    public ResponseEntity createNewLocation(){
-//        return new ResponseEntity();
-//    }
-//
-//    @GetMapping(path = "getLocationByID/{id}")
-//    public void getLocationByID(int id){
-//
-//    }
 
     /*
     TODO: implement the services below
-    - login (anonymous)
-- register (anonymous)
+    - login (anonymous) - done
+- register (anonymous) - done
 - get all users (ADMIN)
 - create new location (ADMIN / BASIC_USER)
 - get location by id (ADMIN / BASIC_USER)
