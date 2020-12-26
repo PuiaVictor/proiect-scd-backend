@@ -1,14 +1,15 @@
 package com.proiectSCD.proiectSCD.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.proiectSCD.proiectSCD.model.dto.UserCreationDTO;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     @GetMapping(path = "/getMe")
@@ -19,12 +20,25 @@ public class UserController {
         return myList;
     }
 
+    @PostMapping(path = "/createUser")
+    public ResponseEntity createUser(@RequestBody final UserCreationDTO userCreationDTO){
+        
+    }
+
     @GetMapping(path = "/getAllUsers")
     public void getAllUsers(){
         //TODO: implementation
     }
 
-    //TODO: attach to DB
+//    @PostMapping(path = "/newLocation")
+//    public ResponseEntity createNewLocation(){
+//        return new ResponseEntity();
+//    }
+//
+//    @GetMapping(path = "getLocationByID/{id}")
+//    public void getLocationByID(int id){
+//
+//    }
 
     /*
     TODO: implement the services below
