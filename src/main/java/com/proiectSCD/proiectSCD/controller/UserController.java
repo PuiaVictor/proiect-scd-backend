@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is designed for USER creation operations.
+ */
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -46,7 +50,7 @@ public class UserController {
     TODO: implement the services below
     - login (anonymous) - done
 - register (anonymous) - done
-- get all users (ADMIN)
+- get all users (ADMIN) - done
 - create new location (ADMIN / BASIC_USER)
 - get location by id (ADMIN / BASIC_USER)
 - update location by id (ADMIN / BASIC_USER)
