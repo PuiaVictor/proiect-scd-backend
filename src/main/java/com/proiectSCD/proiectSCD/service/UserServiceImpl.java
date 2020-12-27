@@ -7,10 +7,12 @@ import com.proiectSCD.proiectSCD.model.entity.UserEntity;
 import com.proiectSCD.proiectSCD.repository.RoleRepository;
 import com.proiectSCD.proiectSCD.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;

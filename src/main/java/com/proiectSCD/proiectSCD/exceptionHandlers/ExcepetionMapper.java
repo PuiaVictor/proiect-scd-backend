@@ -13,14 +13,27 @@ import java.util.Map;
 public class ExcepetionMapper extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {UserException.class})
-    public ResponseEntity handleUserCreationExceptions(final UserException exception){
+    public ResponseEntity handleUserExceptions(final UserException exception){
 
-        final Map<String, Object> userCreationExceptionsHandler = new HashMap<>();
-        userCreationExceptionsHandler.put("status", exception.getStatus());
-        userCreationExceptionsHandler.put("message", exception.getMessage());
+        final Map<String, Object> userExceptionsHandler = new HashMap<>();
+        userExceptionsHandler.put("status", exception.getStatus());
+        userExceptionsHandler.put("message", exception.getMessage());
 
         return new ResponseEntity(
-                userCreationExceptionsHandler,
+                userExceptionsHandler,
+                HttpStatus.valueOf(exception.getStatus())
+        );
+    }
+
+    @ExceptionHandler(value = {LocationException.class})
+    public ResponseEntity handleLocationExceptions(final LocationException exception){
+
+        final Map<String, Object> locationExceptionsHandler = new HashMap<>();
+        locationExceptionsHandler.put("status", exception.getStatus());
+        locationExceptionsHandler.put("message", exception.getMessage());
+
+        return new ResponseEntity(
+                locationExceptionsHandler,
                 HttpStatus.valueOf(exception.getStatus())
         );
     }

@@ -21,7 +21,6 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    //TODO: add beans
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
