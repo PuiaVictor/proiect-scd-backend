@@ -41,13 +41,14 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/users","/users/login").permitAll()
+                .antMatchers(HttpMethod.POST,"/users").permitAll()
                 .antMatchers("/users").hasAnyRole(ADMIN_ROLE)
                 .antMatchers("/location").hasAnyRole(ADMIN_ROLE,BASIC_USER_ROLE)
                 .antMatchers("/admin/findByUserIdAndDate").hasAnyRole(ADMIN_ROLE)
                 .antMatchers("/admin/findByUserId").hasAnyRole(ADMIN_ROLE)
                 .antMatchers("/admin/getAllUsers").hasAnyRole(ADMIN_ROLE)
                 .antMatchers("/users/register").anonymous()
+                .antMatchers("/users/login").anonymous()
                 .anyRequest()
                 .authenticated()
                 .and()

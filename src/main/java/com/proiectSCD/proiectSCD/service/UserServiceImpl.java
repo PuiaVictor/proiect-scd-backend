@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
             throw new UserException(400, "Password field cannot be empty!");
         }
 
-        if(Objects.isNull(userRepository.findByEmail(userCreationDTO.getEmail()))){
+        if(!Objects.isNull(userRepository.findByEmail(userCreationDTO.getEmail()))){
             throw new UserException(409, "The email you have inserted is already in use!");
         }
 
