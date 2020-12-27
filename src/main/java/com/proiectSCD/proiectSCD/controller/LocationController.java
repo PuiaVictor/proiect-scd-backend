@@ -29,9 +29,4 @@ public class LocationController {
     public ResponseEntity<UserLocation> getLocationById(@PathVariable final int id) {
         return ResponseEntity.ok(locationService.getLocationById(id));
     }
-
-    @GetMapping(path = "/findByUserId")
-    public ResponseEntity<List<UserLocation>> getLocationsByUserId(@RequestBody LocationFilterDTO locationFilterDTO) {
-        return ResponseEntity.ok(locationService.getLocationByUserId(locationFilterDTO.getUserId()));
-    }
 }

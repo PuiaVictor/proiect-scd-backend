@@ -39,6 +39,11 @@ public class AdminController {
         return ResponseEntity.ok(userService.getUsers());
     }
 
+    @GetMapping(path = "/findByUserId")
+    public ResponseEntity<List<UserLocation>> getLocationsByUserId(@RequestBody LocationFilterDTO locationFilterDTO) {
+        return ResponseEntity.ok(locationService.getLocationByUserId(locationFilterDTO.getUserId()));
+    }
+
     @GetMapping(path = "/findLocationsByUserIdAndDate")
     public ResponseEntity<List<UserLocation>> getLocationsByUserIdAndDate(@RequestBody LocationFilterDTO userLocationFilterDTO) throws LocationException {
         return ResponseEntity.ok(locationService.getLocationsByUserIdAndDate(userLocationFilterDTO));

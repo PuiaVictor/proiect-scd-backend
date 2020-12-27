@@ -30,7 +30,7 @@ public class ApplicationConfigurations {
         return new LocationServiceImpl(locationRepository, userRepository);
     }
 
-    @Bean
+    @Bean("customUserDetailsService")
     public UserDetailsService createUserDetailsService(final UserRepository userRepository) {
         return new UserDetailsServiceImpl(userRepository);
     }
