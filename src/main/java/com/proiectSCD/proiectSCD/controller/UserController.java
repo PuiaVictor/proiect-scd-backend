@@ -22,14 +22,15 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService){
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    //mock method
     @GetMapping(path = "/getMe")
-    public List<Integer> getList(){
+    public List<Integer> getList() {
         List myList = new ArrayList();
-        for(int i = 0; i<10; i++)
+        for (int i = 0; i < 10; i++)
             myList.add(i);
         return myList;
     }
@@ -43,17 +44,4 @@ public class UserController {
     public ResponseEntity<UserEntity> loginUser(@RequestBody final UserLoginDTO userLoginDTO) throws UserException {
         return ResponseEntity.ok(userService.userLogin(userLoginDTO));
     }
-
-
-    /*
-    TODO: implement the services below
-    - login (anonymous) - done
-- register (anonymous) - done
-- get all users (ADMIN) - done
-- create new location (ADMIN / BASIC_USER)
-- get location by id (ADMIN / BASIC_USER)
-- update location by id (ADMIN / BASIC_USER)
-- delete location by id (ADMIN / BASIC_USER)
-- filter locations by userId / startDate / endDate (ADMIN)
-     */
 }
