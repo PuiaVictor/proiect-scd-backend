@@ -17,8 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity(debug = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
-    private static final String ADMIN_ROLE = "ADMIN";
-    private static final String BASIC_USER_ROLE = "BASIC_USER";
+    private static final String ADMIN = "ADMIN";
+    private static final String USER = "BASIC_USER";
 
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -41,14 +41,14 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/users").permitAll()
-                .antMatchers("/users").hasAnyRole(ADMIN_ROLE)
-                .antMatchers("/location").hasAnyRole(ADMIN_ROLE,BASIC_USER_ROLE)
-                .antMatchers("/admin/findByUserIdAndDate").hasAnyRole(ADMIN_ROLE)
-                .antMatchers("/admin/findByUserId").hasAnyRole(ADMIN_ROLE)
-                .antMatchers("/admin/getAllUsers").hasAnyRole(ADMIN_ROLE)
+                .antMatchers("/admin/*").hasRole(ADMIN)
                 .antMatchers("/users/register").anonymous()
-                .antMatchers("/users/login").anonymous()
+                .antMatchers("/users/login").hasAnyRole(USER, ADMIN)
+                .antMatchers("/users/getMe").anonymous()
+                .antMatchers("/location/add").hasRole(USER)
+                .antMatchers("/location/delete/{id}").hasRole(ADMIN)
+                .antMatchers("/location/update/{id}").hasAnyRole(USER, ADMIN)
+                .antMatchers("/location/getById/{id}").hasAnyRole(USER, ADMIN)
                 .anyRequest()
                 .authenticated()
                 .and()

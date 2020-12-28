@@ -5,14 +5,10 @@ import java.util.Date;
 public class CreateLocationDTO {
     private String latitude;
     private String longitude;
-    private Date date;
-    private String email;
 
-    public CreateLocationDTO(String latitude, String longitude, String email) {
+    public CreateLocationDTO(String latitude, String longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.date = new Date();
-        this.email = email;
     }
 
     public String getLatitude() {
@@ -29,21 +25,5 @@ public class CreateLocationDTO {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

@@ -4,9 +4,11 @@ import com.proiectSCD.proiectSCD.exceptionHandlers.LocationException;
 import com.proiectSCD.proiectSCD.model.dto.CreateLocationDTO;
 import com.proiectSCD.proiectSCD.model.dto.LocationUpdateDTO;
 import com.proiectSCD.proiectSCD.model.entity.UserLocation;
+import com.proiectSCD.proiectSCD.model.security.UserDetailsSecurity;
 import com.proiectSCD.proiectSCD.service.LocationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -5,8 +5,10 @@ import com.proiectSCD.proiectSCD.model.dto.CreateLocationDTO;
 import com.proiectSCD.proiectSCD.model.dto.LocationFilterDTO;
 import com.proiectSCD.proiectSCD.model.dto.LocationUpdateDTO;
 import com.proiectSCD.proiectSCD.model.entity.UserLocation;
+import com.proiectSCD.proiectSCD.model.security.UserDetailsSecurity;
 import com.proiectSCD.proiectSCD.repository.LocationRepository;
 import com.proiectSCD.proiectSCD.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -25,10 +27,11 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public CreateLocationDTO addNewLocation(CreateLocationDTO createLocationDTO) {
+        final UserDetailsSecurity currentUser = (UserDetailsSecurity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         locationRepository.save(new UserLocation(createLocationDTO.getLatitude(),
                 createLocationDTO.getLongitude(),
-                createLocationDTO.getDate(),
-                userRepository.findByEmail(createLocationDTO.getEmail())));
+                new Date(),
+                userRepository.findByEmail(currentUser.getUser().getEmail())));
         return null;
     }
 
