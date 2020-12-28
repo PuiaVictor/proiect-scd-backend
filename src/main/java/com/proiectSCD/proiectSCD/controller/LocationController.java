@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/location")
+@RequestMapping(path = "/locations")
 public class LocationController {
     private final LocationServiceImpl locationService;
 
@@ -21,23 +21,23 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-    @PostMapping(path = "/add")
+    @PostMapping
     public ResponseEntity<CreateLocationDTO> addLocation(@RequestBody final CreateLocationDTO locationDTO) {
         return ResponseEntity.ok(locationService.addNewLocation(locationDTO));
     }
 
-    @DeleteMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/{id}")
     public void deleteLocationById(@PathVariable final Long id) throws LocationException {
         locationService.deleteLocationById(id);
     }
 
-    @PutMapping(path = "/update/{id}")
+    @PutMapping(path = "/{id}")
     public ResponseEntity<UserLocation> updateLocationById(@PathVariable final Long id, @RequestBody final LocationUpdateDTO locationUpdateDTO) throws LocationException {
         locationUpdateDTO.setId(id);
         return ResponseEntity.ok(locationService.updateLocationById(locationUpdateDTO));
     }
 
-    @GetMapping(path = "/getById/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<UserLocation> getLocationById(@PathVariable final int id) {
         return ResponseEntity.ok(locationService.getLocationById(id));
     }
