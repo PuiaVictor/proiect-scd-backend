@@ -1,11 +1,11 @@
 package com.proiectSCD.proiectSCD.service;
 
 import com.proiectSCD.proiectSCD.exceptionHandlers.UserException;
-import com.proiectSCD.proiectSCD.model.dto.UserCreationDTO;
-import com.proiectSCD.proiectSCD.model.dto.UserLoginDTO;
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
-import com.proiectSCD.proiectSCD.repository.RoleRepository;
-import com.proiectSCD.proiectSCD.repository.UserRepository;
+import com.proiectSCD.proiectSCD.dal.model.dto.UserCreationDTO;
+import com.proiectSCD.proiectSCD.dal.model.dto.UserLoginDTO;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.repository.RoleRepository;
+import com.proiectSCD.proiectSCD.dal.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

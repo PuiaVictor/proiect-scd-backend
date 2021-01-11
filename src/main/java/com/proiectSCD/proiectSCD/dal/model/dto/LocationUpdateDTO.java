@@ -1,14 +1,19 @@
-package com.proiectSCD.proiectSCD.model.dto;
+package com.proiectSCD.proiectSCD.dal.model.dto;
 
 import java.util.Date;
 
-public class CreateLocationDTO {
+public class LocationUpdateDTO {
+    private Long id;
     private String latitude;
     private String longitude;
+    private Date date;
 
-    public CreateLocationDTO(String latitude, String longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLatitude() {
@@ -26,4 +31,13 @@ public class CreateLocationDTO {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
 }

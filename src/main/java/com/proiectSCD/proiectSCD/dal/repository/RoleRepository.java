@@ -1,6 +1,6 @@
-package com.proiectSCD.proiectSCD.repository;
+package com.proiectSCD.proiectSCD.dal.repository;
 
-import com.proiectSCD.proiectSCD.model.entity.RolesEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.RolesEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Set;

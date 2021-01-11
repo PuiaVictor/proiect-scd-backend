@@ -1,4 +1,4 @@
-package com.proiectSCD.proiectSCD.model.entity;
+package com.proiectSCD.proiectSCD.dal.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

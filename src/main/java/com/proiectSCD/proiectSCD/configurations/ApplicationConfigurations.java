@@ -1,8 +1,9 @@
 package com.proiectSCD.proiectSCD.configurations;
 
-import com.proiectSCD.proiectSCD.repository.LocationRepository;
-import com.proiectSCD.proiectSCD.repository.RoleRepository;
-import com.proiectSCD.proiectSCD.repository.UserRepository;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.repository.LocationRepository;
+import com.proiectSCD.proiectSCD.dal.repository.RoleRepository;
+import com.proiectSCD.proiectSCD.dal.repository.UserRepository;
 import com.proiectSCD.proiectSCD.service.LocationService;
 import com.proiectSCD.proiectSCD.service.LocationServiceImpl;
 import com.proiectSCD.proiectSCD.service.UserService;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class ApplicationConfigurations {
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

@@ -1,8 +1,8 @@
 package com.proiectSCD.proiectSCD.service.security;
 
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
-import com.proiectSCD.proiectSCD.model.security.UserDetailsSecurity;
-import com.proiectSCD.proiectSCD.repository.UserRepository;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.model.security.UserDetailsSecurity;
+import com.proiectSCD.proiectSCD.dal.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

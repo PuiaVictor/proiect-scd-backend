@@ -1,6 +1,6 @@
-package com.proiectSCD.proiectSCD.model.security;
+package com.proiectSCD.proiectSCD.dal.model.security;
 
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.proiectSCD.proiectSCD.model.dto;
+package com.proiectSCD.proiectSCD.dal.model.dto;
 
 public class UserLoginDTO {
 

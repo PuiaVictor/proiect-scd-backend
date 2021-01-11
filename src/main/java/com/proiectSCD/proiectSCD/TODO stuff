@@ -1,3 +1,4 @@
 //TODO 1: finish implementation for the filtering methods
 //TODO 2: change paths in controllers - DONE
 //TODO 3: find a method to check if user that makes request is the same as the one that is in the email.
+//TODO 4: if registration is attempted on an email that is already in use solve case. - DONE

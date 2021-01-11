@@ -1,6 +1,7 @@
 package com.proiectSCD.proiectSCD.configurations;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -43,10 +49,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/*").hasRole(ADMIN)
                 .antMatchers("/users/register").anonymous()
-                .antMatchers("/users/login").hasAnyRole(USER, ADMIN)
+                .antMatchers("/users/login").anonymous()
                 .antMatchers("/users/getMe").anonymous()
-                .antMatchers("/location/add").hasRole(USER)
-                .antMatchers("/location/delete/{id}").hasRole(ADMIN)
+                .antMatchers("/location/add").hasAnyRole(USER, ADMIN)
+                .antMatchers("/location/delete/{id}").hasAnyRole(USER, ADMIN)
                 .antMatchers("/location/update/{id}").hasAnyRole(USER, ADMIN)
                 .antMatchers("/location/getById/{id}").hasAnyRole(USER, ADMIN)
                 .anyRequest()

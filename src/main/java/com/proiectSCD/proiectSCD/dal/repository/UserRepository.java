@@ -1,6 +1,7 @@
-package com.proiectSCD.proiectSCD.repository;
+package com.proiectSCD.proiectSCD.dal.repository;
 
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.RolesEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
@@ -10,4 +11,5 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
     UserEntity save(UserEntity user);
 
     UserEntity getById(Long id);
+
 }

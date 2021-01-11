@@ -2,20 +2,16 @@ package com.proiectSCD.proiectSCD.controller;
 
 import com.proiectSCD.proiectSCD.exceptionHandlers.LocationException;
 import com.proiectSCD.proiectSCD.exceptionHandlers.UserException;
-import com.proiectSCD.proiectSCD.model.dto.LocationFilterDTO;
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
-import com.proiectSCD.proiectSCD.model.entity.UserLocation;
-import com.proiectSCD.proiectSCD.service.LocationService;
+import com.proiectSCD.proiectSCD.dal.model.dto.LocationFilterDTO;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserLocation;
 import com.proiectSCD.proiectSCD.service.LocationServiceImpl;
-import com.proiectSCD.proiectSCD.service.UserService;
 import com.proiectSCD.proiectSCD.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,23 +25,34 @@ public class AdminController {
     private final LocationServiceImpl locationService;
 
     @Autowired
-    public AdminController(UserServiceImpl userService, LocationServiceImpl locationService){
+    public AdminController(UserServiceImpl userService, LocationServiceImpl locationService) {
         this.userService = userService;
         this.locationService = locationService;
     }
 
     @GetMapping(path = "/getAllUsers")
-    public ResponseEntity<List<UserEntity>> getAllUsers() throws UserException{
+    public ResponseEntity<List<UserEntity>> getAllUsers() throws UserException {
         return ResponseEntity.ok(userService.getUsers());
     }
 
     @GetMapping(path = "/findByUserId")
-    public ResponseEntity<List<UserLocation>> getLocationsByUserId(@RequestBody LocationFilterDTO locationFilterDTO) {
+    public ResponseEntity<List<UserLocation>> getLocationsByUserId(@RequestBody LocationFilterDTO locationFilterDTO) throws LocationException{
         return ResponseEntity.ok(locationService.getLocationByUserId(locationFilterDTO.getUserId()));
     }
 
-    @GetMapping(path = "/findLocationsByUserIdAndDate")
-    public ResponseEntity<List<UserLocation>> getLocationsByUserIdAndDate(@RequestBody LocationFilterDTO userLocationFilterDTO) throws LocationException {
-        return ResponseEntity.ok(locationService.getLocationsByUserIdAndDate(userLocationFilterDTO));
+    @GetMapping(path="/findLocationsByUserIdAndDate")
+    public ResponseEntity<List<UserLocation>> getLocationsByUserIdAndDate(@RequestBody LocationFilterDTO locationFilterDTO) throws LocationException{
+        return ResponseEntity.ok(locationService.getLocationsByUserIdAndDate(locationFilterDTO));
     }
+//    @GetMapping(path = "/findLocationsByUserIdAndDate")
+//    public ResponseEntity<List<UserLocation>> getLocationsByUserIdAndDate(
+//            @RequestParam(name = "userId") final Long userId,
+//            @RequestParam(name = "startDate") final Date startDate,
+//            @RequestParam(name = "endDate") final Date endDate) throws LocationException {
+//        LocationFilterDTO locationFilterDTO = new LocationFilterDTO();
+//        locationFilterDTO.setUserId(userId);
+//        locationFilterDTO.setStartDate(startDate);
+//        locationFilterDTO.setEndDate(endDate);
+//        return ResponseEntity.ok(locationService.getLocationsByUserIdAndDate(locationFilterDTO));
+//    }
 }

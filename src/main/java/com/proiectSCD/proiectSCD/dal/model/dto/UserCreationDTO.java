@@ -1,6 +1,6 @@
-package com.proiectSCD.proiectSCD.model.dto;
+package com.proiectSCD.proiectSCD.dal.model.dto;
 
-import com.proiectSCD.proiectSCD.model.entity.RolesEntity;
+import com.proiectSCD.proiectSCD.dal.model.entity.RolesEntity;
 
 import java.util.Set;
 
@@ -68,13 +68,4 @@ public class UserCreationDTO {
         this.assignedRoles = assignedRoles;
     }
 
-    @Override
-    public String toString() {
-        return "UserCreationDTO{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }

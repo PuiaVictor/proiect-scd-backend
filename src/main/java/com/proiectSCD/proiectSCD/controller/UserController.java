@@ -1,9 +1,9 @@
 package com.proiectSCD.proiectSCD.controller;
 
 import com.proiectSCD.proiectSCD.exceptionHandlers.UserException;
-import com.proiectSCD.proiectSCD.model.dto.UserCreationDTO;
-import com.proiectSCD.proiectSCD.model.dto.UserLoginDTO;
-import com.proiectSCD.proiectSCD.model.entity.UserEntity;
+import com.proiectSCD.proiectSCD.dal.model.dto.UserCreationDTO;
+import com.proiectSCD.proiectSCD.dal.model.dto.UserLoginDTO;
+import com.proiectSCD.proiectSCD.dal.model.entity.UserEntity;
 import com.proiectSCD.proiectSCD.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
